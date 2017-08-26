@@ -1,0 +1,68 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Cadastros</li>
+  <li class="breadcrumb-item">Tipo do Curso</li>
+  &nbsp;
+  <a routerLink="/cadastros/tipo-curso/novo">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  </a>
+</ol>
+
+<div class="card">
+  <div class="card-body">
+      <form>
+          <div class="form-row align-items-center">
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <input type="text" class="form-control mb-2 mb-sm-0" [(ngModel)]="tipoCurso.nome" name="nome" placeholder="Localizar">
+              </div>
+              <div class="col-auto">
+                  <a href="javascript:void(0)" (click)="buscar()">
+                    <li class="fa fa-search" aria-hidden="true"></li>
+                  </a>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+<div>
+  <p></p>
+  <span class="qtd-registros-encontrado-table">
+    {{listarTipos.qtd}} registos encontrados
+    <span *ngIf="exibir_resultador"> para {{resultador_search}}</span>
+  </span>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tipo of listarTipos.data" >
+      <td>{{tipo.nome}}</td>
+      <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              <div class="dropdown-menu">
+              <a class="dropdown-item" href="javascript: void(0)" (click)="visualizar(tipo.id)"><i class="fa fa-file" aria-hidden="true"></i> &nbsp; Visualizar   </a>
+              <a class="dropdown-item" href="javascript: void(0)" (click)="alterar(tipo.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; Alterar </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript: void(0)" (click)="excluir(tipo.id)"><i class="fa fa-times" aria-hidden="true"></i> &nbsp; Remover </a>
+            </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+  </ul>
+</nav>

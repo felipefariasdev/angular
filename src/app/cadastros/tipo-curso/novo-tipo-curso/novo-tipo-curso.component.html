@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Cadastros</li>
+  <li class="breadcrumb-item"><a routerLink="/cadastros/tipo-curso/listar">Tipo de Cursos</a></li>
+  <li class="breadcrumb-item active">Novo</li>
+</ol>
+
+<div class="card">
+  <div class="card-body">
+      <form (ngSubmit)="salvar()" >
+          <div class="form-group">
+              <label for="exampleInputEmail1">Tipo do Curso</label>
+              <input type="text" class="form-control" [(ngModel)]="tipoCurso.nome" name="nome" placeholder="Qual é o nome do tipo?">
+          </div>
+
+          <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="save_success" >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              Salvo com sucesso!
+            </div>
+
+          <button type="submit" class="btn btn-dark">Salvar</button>
+      </form>
+  </div>
+</div>
