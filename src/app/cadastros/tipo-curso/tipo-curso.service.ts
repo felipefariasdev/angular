@@ -25,19 +25,13 @@ export class TipoCursoService {
       .catch(this.httpUtil.processarErros);
   }
 
-  listar() {
-	  
-	//url para testar o get https://www.w3schools.com/angular/customers.php  
-    return {
-      'data': [
-        {'id': '1', 'nome': 'tipo1'},
-        {'id': '2', 'nome': 'tipo2'},
-        {'id': '3', 'nome': 'tipo3'}
-      ],
-      'qtd': 3
-    };
-  }
+  listarTodos(): Observable<TipoCurso[]> {
+    const url = 'https://jsonplaceholder.typicode.com/users';
 
+    return this.http.get(url, this.httpUtil.headers())
+      .map(this.httpUtil.extrairDados)
+      .catch(this.httpUtil.processarErros);
+  }
   salvar(tipoCurso: TipoCurso) {
     this.listarTiposCurso.push(tipoCurso);
     console.log(this.listarTiposCurso);
