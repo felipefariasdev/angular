@@ -26,11 +26,6 @@
   </div>
 </div>
 <div>
-  <p></p>
-  <span class="qtd-registros-encontrado-table">
-    {{listarTipos.qtd}} registos encontrados
-    <span *ngIf="exibir_resultador"> para {{resultador_search}}</span>
-  </span>
 </div>
 <table class="table table-striped">
   <thead>
@@ -40,8 +35,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let tipo of listarTipos.data" >
-      <td>{{tipo.nome}}</td>
+    <tr *ngFor="let tipo of listarTiposData" >
+      <td>{{tipo.name}}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>

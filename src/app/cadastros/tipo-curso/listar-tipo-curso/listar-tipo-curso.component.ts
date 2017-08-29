@@ -12,7 +12,7 @@ import { TipoCurso } from './../tipo-curso';
 export class ListarTipoCursoComponent implements OnInit {
 
   tipoCurso: TipoCurso = new TipoCurso();
-  listarTipos: any;
+  listarTiposData: TipoCurso[];
 
   exibir_resultador: boolean;
   resultador_search;
@@ -20,8 +20,14 @@ export class ListarTipoCursoComponent implements OnInit {
   constructor(private tipoCursoService: TipoCursoService) {}
 
   ngOnInit() {
-    this.listarTipos = this.tipoCursoService.listar();
+    this.listarDados();
   }
+  listarDados() {
+    this.tipoCursoService.listarTodos().subscribe(
+      lista => this.listarTiposData = lista
+    );
+  }
+
   visualizar(id) {
     alert('visualizar: ' + id);
   }
